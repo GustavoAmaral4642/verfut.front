@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <h:outputStylesheet name="primefaces-apollo-blue-dark/theme.css" />
+</h:head>
+
+<h:body>
+
+    <div class="card">
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar hideDelay="1000">
+                <p:submenu label="File" icon="pi pi-fw pi-file">
+                    <p:submenu label="New" icon="pi pi-fw pi-plus">
+                        <p:menuitem value="Bookmark" icon="pi pi-fw pi-bookmark"/>
+                        <p:menuitem value="Video" icon="pi pi-fw pi-video"/>
+                    </p:submenu>
+                    <p:menuitem value="Delete" icon="pi pi-fw pi-trash"/>
+                    <p:divider />
+                    <p:menuitem value="Export" icon="pi pi-fw pi-external-link"/>
+                    <p:menuitem value="Duplicate" icon="pi pi-fw pi-copy" disabled="true"/>
+                </p:submenu>
+
+                <p:submenu label="File" icon="pi pi-fw pi-file">
+                    <p:submenu label="New" icon="pi pi-fw pi-plus">
+                        <p:menuitem value="Bookmark" icon="pi pi-fw pi-bookmark"/>
+                        <p:menuitem value="Video" icon="pi pi-fw pi-video"/>
+                    </p:submenu>
+                    <p:menuitem value="Delete" icon="pi pi-fw pi-trash"/>
+                    <p:divider />
+                    <p:menuitem value="Export" icon="pi pi-fw pi-external-link"/>
+                    <p:menuitem value="Duplicate" icon="pi pi-fw pi-copy" disabled="true"/>
+                </p:submenu>
+            </p:menubar>
+
+        </h:form>
+    </div>
+
+    <p:separator/>
+    <div class="col-12">
+        <div class="card">
+            <p:dataTable widgetVar="customersDT2" var="customer" value="#{playerController.getPlayers()}" selectionMode="single" reflow="true"
+                         rowKey="#{customer.id}" scrollable="true" scrollHeight="500"
+                         styleClass="ui-datatable-striped ui-datatable-sm ui-datatable-gridlines">
+                <f:facet name="header">
+                    <div class="customers-table-header">
+                        <span style="font-weight: bold">CUSTOMERS</span>
+
+                        <span class="ui-input-icon-left filter-container">
+                                        <i class="pi pi-search"/>
+                                        <p:inputText id="globalFilter" onkeyup="PF('customersDT2').filter()" placeholder="Search"/>
+                                    </span>
+                    </div>
+                </f:facet>
+                <p:column headerText="Codigo" sortBy="#{customer.id}" filterBy="#{customer.id}">
+                    <h:outputText value="#{customer.id}" />
+                </p:column>
+                <p:column headerText="Nome" sortBy="#{customer.name}" filterBy="#{customer.nam}">
+                    <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.name}" />
+                </p:column>
+                <p:column headerText="Idade(Anos)" sortBy="#{customer.age}" filterBy="#{customer.age}">
+                    <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.age}" />
+                </p:column>
+                <p:column headerText="Faixa" sortBy="#{customer.range}" filterBy="#{customer.range}">
+                    <h:outputText value="#{customer.range}" />
+                </p:column>
+            </p:dataTable>
+        </div>
+    </div>
+</h:body>
+</html>

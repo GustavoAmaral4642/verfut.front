@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <h:outputStylesheet name="primefaces-nova-dark/theme.css"/>
+</h:head>
+
+<h:body>
+
+    <div class="card">
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar hideDelay="1000">
+                <p:submenu label="Arquivo" icon="pi pi-fw pi-file" disabled="true">
+                    <p:submenu label="New" icon="pi pi-fw pi-plus" >
+                        <p:menuitem value="Bookmark" icon="pi pi-fw pi-bookmark"/>
+                        <p:menuitem value="Video" icon="pi pi-fw pi-video"/>
+                    </p:submenu>
+                    <p:menuitem value="Delete" icon="pi pi-fw pi-trash"/>
+                    <p:divider/>
+                    <p:menuitem value="Export" icon="pi pi-fw pi-external-link"/>
+                    <p:menuitem value="Duplicate" icon="pi pi-fw pi-copy" disabled="true"/>
+                </p:submenu>
+
+                <p:submenu label="Configurações" icon="pi pi-fw pi-file" disabled="true">
+                    <p:submenu label="New" icon="pi pi-fw pi-plus">
+                        <p:menuitem value="Bookmark" icon="pi pi-fw pi-bookmark"/>
+                        <p:menuitem value="Video" icon="pi pi-fw pi-video"/>
+                    </p:submenu>
+                    <p:menuitem value="Delete" icon="pi pi-fw pi-trash"/>
+                    <p:divider/>
+                    <p:menuitem value="Export" icon="pi pi-fw pi-external-link"/>
+                    <p:menuitem value="Duplicate" icon="pi pi-fw pi-copy" disabled="true"/>
+                </p:submenu>
+            </p:menubar>
+
+        </h:form>
+    </div>
+
+    <p:separator/>
+
+    <div class="card">
+        <h:form>
+            <p:dataTable var="team" value="#{teamController.getTeams()}">
+                <f:facet name="header">
+                    Times
+                </f:facet>
+
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column rowspan="2" headerText="Time"/>
+                        <p:column colspan="2" headerText="Jogadores"/>
+                    </p:row>
+                    <p:row>
+                        <p:column headerText="Nome"/>
+                        <p:column headerText="Idade"/>
+                    </p:row>
+                </p:columnGroup>
+
+                <p:subTable var="player" value="#{team.players}">
+                    <f:facet name="header">
+                        <h:outputText value="#{team.name}"/>
+                    </f:facet>
+                    <p:column>
+                        <h:outputText value="Faixa: #{player.range}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{player.name}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{player.age}"/>
+                    </p:column>
+                    <p:columnGroup type="footer">
+                        <p:row >
+                            <p:column footerText="" class="text-right font-bold" style="background: gainsboro"/>
+                            <p:column footerText="" class="font-bold" style="background: gainsboro"/>
+                            <p:column footerText="" class="font-bold" style="background: gainsboro"/>
+                        </p:row>
+                    </p:columnGroup>
+                </p:subTable>
+
+            </p:dataTable>
+
+        </h:form>
+    </div>
+</h:body>
+
+</html>
