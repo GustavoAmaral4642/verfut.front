@@ -5,22 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameModel {
+public class NoGameModel {
 
     private Long id;
 
-    private String dateGame;
+    private String team;
 
-    private String numberRound;
-
-    private List<ItemGameModel> itensGames = new ArrayList<>();
-
-    private String noGames;
+    private GameModel games;
 }

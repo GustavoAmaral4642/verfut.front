@@ -16,9 +16,20 @@ public class ItemGameModel {
 
     private Long id;
 
-    private String dateGame;
+    private String hourGame;
 
-    private String numberRound;
+    private String teamA;
 
-    private List<ItemGamesModel> itemGamesModels = new ArrayList<>();
+    private String totalGoalsTeamA;
+
+    private String pointsReceivedTeamA;
+
+    private String teamB;
+
+    private String totalGoalsTeamB;
+
+    private String pointsReceivedTeamB;
+
+    private GameModel games;
+
 }
